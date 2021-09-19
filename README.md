@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Spacestagram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uses the NASA Image API to retrieve the Astronomy Picture of The Day and display the image and its corresponding info. User is also able to like each image.
+
+## Dependencies
+- NASA Image API
+- Axios
+- Material UI
 
 ## Available Scripts
 
