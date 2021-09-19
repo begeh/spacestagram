@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getAPOD } from "../helpers";
+import { CircularProgress } from "@mui/material";
 
 export default function ImageCard() {
   const [data, setData] = useState();
@@ -25,41 +26,39 @@ export default function ImageCard() {
     setData(response.data);
   };
 
-  return (
+  return data ? (
     <Card sx={{ maxWidth: 345 }}>
-      {data && (
-        <>
-          <CardMedia component="img" image={hdurl} alt={title} />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              style={{
-                margin: "10px 0px",
-              }}
-            >
-              {date}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" textAlign="left">
-              {explanation}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              variant="contained"
-              size="small"
-              style={{ textTransform: "none", fontSize: "16px" }}
-              color={liked ? "primary" : "inherit"}
-              onClick={() => setLiked(!liked)}
-            >
-              Like
-            </Button>
-          </CardActions>
-        </>
-      )}
+      <CardMedia component="img" image={hdurl} alt={title} />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {title}
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          style={{
+            margin: "10px 0px",
+          }}
+        >
+          {date}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" textAlign="left">
+          {explanation}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button
+          variant="contained"
+          size="small"
+          style={{ textTransform: "none", fontSize: "16px"}}
+          color={liked ? "primary" : "inherit"}
+          onClick={() => setLiked(!liked)}
+        >
+          Like
+        </Button>
+      </CardActions>
     </Card>
+  ) : (
+    <CircularProgress />
   );
 }
