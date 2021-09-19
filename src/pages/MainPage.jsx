@@ -38,15 +38,12 @@ export default function MainPage() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="main-page">
+      <header className="header">
         <Typography variant="h3" component="div">
           Spacestagram
         </Typography>
-        <Typography
-          className="image-date"
-          variant="h6"
-        >
+        <Typography variant="h6">
           Powered By NASA's Image API
         </Typography>
       </header>
