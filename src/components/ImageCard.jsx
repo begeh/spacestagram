@@ -14,7 +14,7 @@ const ImageCard = (props) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} className="image-card">
       <CardMedia component="img" image={hdurl} alt={title} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

@@ -1,6 +1,6 @@
-import { getAPOD } from "./helpers";
+import { getPicOfTheDay } from "./helpers";
 
 test("Successfully get data from NASA API", async () => {
-  const response = await getAPOD();
+  const response = await getPicOfTheDay();
   expect(response.status).toEqual(200);
 });

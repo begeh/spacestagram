@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "../App.css";
 import ImageCard from "../components/ImageCard";
 import Typography from "@mui/material/Typography";
-import { getAPOD } from "../helpers";
+import { getPicOfTheDay } from "../helpers";
 
 export default function MainPage() {
   const [photo, setPhoto] = useState();
@@ -16,7 +16,7 @@ export default function MainPage() {
   // Retrieve date from NASA api
   const fetchPhoto = async () => {
     setState("loading");
-    const response = await getAPOD();
+    const response = await getPicOfTheDay();
     if (response.status === 200) {
       setPhoto(response.data);
       setState("retrieved");
@@ -26,12 +26,22 @@ export default function MainPage() {
     }
   };
 
+  // Create an array of the same photo 3 times.
+  const photos = [];
+  for (let i = 0; i < 3; i++) {
+    photos.push(<ImageCard photo={photo} />);
+  }
+
   const PageView = () => {
     switch (state) {
       case "loading":
-        return <CircularProgress />;
+        return (
+          <div className="loading-container">
+            <CircularProgress />
+          </div>
+        );
       case "retrieved":
-        return <ImageCard photo={photo} />;
+        return photos;
       default:
         return <></>;
     }
@@ -39,17 +49,14 @@ export default function MainPage() {
 
   return (
     <div className="main-page">
-      <header className="header">
+      <header className="main-header">
         <Typography variant="h3" component="div">
           Spacestagram
         </Typography>
-        <Typography variant="h6">
-          Powered By NASA's Image API
-        </Typography>
+        <Typography variant="h6">Powered By NASA's Image API</Typography>
       </header>
-      <body>
+      <body className='main-body'>
         <PageView />
-        <ImageCard photo={photo} />
       </body>
     </div>
   );
