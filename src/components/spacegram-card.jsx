@@ -12,13 +12,14 @@ import axios from "axios";
 export default function SpaceGram() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
-  const { hdurl, explanation, title } = data;
+  const { hdurl, explanation, title, date } = data;
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const fetchData = async (set) => {
+  // Retrieve date from NASA api
+  const fetchData = async () => {
     setLoading(true);
     await axios
       .get(`https://api.nasa.gov/planetary/apod`, {
@@ -27,18 +28,20 @@ export default function SpaceGram() {
       .then((res) => setData(res.data));
     setLoading(false);
   };
+
   return (
     data && (
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          image={hdurl}
-          alt={title}
-        />
+        <CardMedia component="img" image={hdurl} alt={title} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}
+            </Typography>
+            <Typography variant="body1" color="text.secondary" style={{display: "flex", alignItems: "center", justifyContent: 'center'}}>
+              {date}
+            </Typography>
+          </div>
           <Typography variant="body2" color="text.secondary" textAlign="left">
             {explanation}
           </Typography>
