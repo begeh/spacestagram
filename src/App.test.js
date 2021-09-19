@@ -1,8 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { getNASAImageData } from "./helpers";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("Successfully get data from NASA API", async () => {
+  const response = await getNASAImageData();
+  expect(response.status).toEqual(200);
 });

@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
+import { getNASAImageData } from "../helpers";
 
 export default function SpaceGram() {
   const [data, setData] = useState();
@@ -21,11 +21,8 @@ export default function SpaceGram() {
 
   // Retrieve date from NASA api
   const fetchData = async () => {
-    await axios
-      .get(`https://api.nasa.gov/planetary/apod`, {
-        params: { api_key: process.env.REACT_APP_NASA_API_KEY },
-      })
-      .then((res) => setData(res.data));
+    const response = await getNASAImageData();
+    setData(response.data);
   };
 
   return (
@@ -54,7 +51,7 @@ export default function SpaceGram() {
             <Button
               variant="contained"
               size="small"
-              style={{textTransform: "none", fontSize: "16px"}}
+              style={{ textTransform: "none", fontSize: "16px" }}
               color={liked ? "primary" : "inherit"}
               onClick={() => setLiked(!liked)}
             >
