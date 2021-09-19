@@ -3,34 +3,28 @@ import { useEffect, useState } from "react";
 import "../App.css";
 import ImageCard from "../components/ImageCard";
 import Typography from "@mui/material/Typography";
-import { getPicOfTheDay } from "../helpers";
+import { getImages } from "../helpers";
 
 export default function MainPage() {
-  const [photo, setPhoto] = useState();
+  const [photos, setPhotos] = useState([]);
   const [state, setState] = useState("");
 
   useEffect(() => {
-    fetchPhoto();
+    fetchPhotos();
   }, []);
 
   // Retrieve date from NASA api
-  const fetchPhoto = async () => {
+  const fetchPhotos = async () => {
     setState("loading");
-    const response = await getPicOfTheDay();
+    const response = await getImages();
     if (response.status === 200) {
-      setPhoto(response.data);
+      setPhotos(response.data);
       setState("retrieved");
     } else {
       alert(response.message);
       setState("error");
     }
   };
-
-  // Create an array of the same photo 3 times.
-  const photos = [];
-  for (let i = 0; i < 3; i++) {
-    photos.push(<ImageCard photo={photo} />);
-  }
 
   const PageView = () => {
     switch (state) {
@@ -41,7 +35,13 @@ export default function MainPage() {
           </div>
         );
       case "retrieved":
-        return photos;
+        return (
+          <>
+            {photos.map((photo) => (
+              <ImageCard photo={photo} />
+            ))}
+          </>
+        );
       default:
         return <></>;
     }
@@ -55,7 +55,7 @@ export default function MainPage() {
         </Typography>
         <Typography variant="h6">Powered By NASA's Image API</Typography>
       </header>
-      <body className='main-body'>
+      <body className="main-body">
         <PageView />
       </body>
     </div>
