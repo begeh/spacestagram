@@ -16,14 +16,15 @@ export default function MainPage() {
   // Retrieve date from NASA api
   const fetchPhotos = async () => {
     setState("loading");
-    const response = await getImages();
-    if (response.status === 200) {
-      setPhotos(response.data);
-      setState("retrieved");
-    } else {
-      alert(response.message);
-      setState("error");
-    }
+    return getImages()
+      .then((res) => {
+        setPhotos(res.data);
+        setState("retrieved");
+      })
+      .catch((err) => {
+        alert(err.message);
+        setState("error");
+      });
   };
 
   const PageView = () => {
