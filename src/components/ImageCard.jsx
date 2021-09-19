@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getAPOD } from "../helpers";
 import { CircularProgress } from "@mui/material";
+import './index.css'
 
 export default function ImageCard() {
   const [data, setData] = useState();
@@ -23,7 +24,11 @@ export default function ImageCard() {
   // Retrieve date from NASA api
   const fetchData = async () => {
     const response = await getAPOD();
-    setData(response.data);
+    if (response.status === 200) {
+      setData(response.data);
+    } else {
+      alert(response.message);
+    }
   };
 
   return data ? (
@@ -34,11 +39,9 @@ export default function ImageCard() {
           {title}
         </Typography>
         <Typography
+          className="image-date"
           variant="body1"
           color="text.secondary"
-          style={{
-            margin: "10px 0px",
-          }}
         >
           {date}
         </Typography>
@@ -49,8 +52,8 @@ export default function ImageCard() {
       <CardActions>
         <Button
           variant="contained"
+          className="like-button"
           size="small"
-          style={{ textTransform: "none", fontSize: "16px"}}
           color={liked ? "primary" : "inherit"}
           onClick={() => setLiked(!liked)}
         >

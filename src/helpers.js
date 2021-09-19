@@ -2,11 +2,12 @@ import axios from "axios";
 
 const apiUrl = process.env.REACT_APP_NASA_ENDPOINT
 
-// Get NASA Astronomy Picture of The Day
+/** Get NASA Astronomy Picture of The Day */
 export const getAPOD = async () => {
   return axios
     .get(`${apiUrl}/planetary/apod`, {
       params: { api_key: process.env.REACT_APP_NASA_API_KEY },
     })
-    .then((res) => res);
+    .then((res) => res)
+    .catch((err) => err);
 };
