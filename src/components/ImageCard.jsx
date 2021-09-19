@@ -6,9 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import { useEffect } from "react";
-import { getAPOD } from "../helpers";
-import { CircularProgress } from "@mui/material";
 import "./index.css";
 
 const ImageCard = (props) => {
