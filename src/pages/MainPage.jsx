@@ -1,5 +1,5 @@
-import "./App.css";
-import SpaceGram from "./components/spacegram-card";
+import "../App.css";
+import SpaceGram from "../components/ImageCard";
 
 export default function MainPage() {
   return (

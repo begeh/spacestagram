@@ -7,9 +7,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getNASAImageData } from "../helpers";
+import { getAPOD } from "../helpers";
 
-export default function SpaceGram() {
+export default function ImageCard() {
   const [data, setData] = useState();
   const { hdurl, explanation, title, date } = data || {};
 
@@ -21,7 +21,7 @@ export default function SpaceGram() {
 
   // Retrieve date from NASA api
   const fetchData = async () => {
-    const response = await getNASAImageData();
+    const response = await getAPOD();
     setData(response.data);
   };
 
