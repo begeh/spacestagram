@@ -6,7 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import "./index.css";
 
 const ImageCard = (props) => {
   const { hdurl, explanation, title, date } = props.photo || {};
