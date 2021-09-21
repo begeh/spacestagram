@@ -1,6 +1,5 @@
 import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
-import "../App.css";
 import ImageCard from "../components/ImageCard";
 import Typography from "@mui/material/Typography";
 import { getImages } from "../helpers";
@@ -51,10 +50,10 @@ export default function MainPage() {
   return (
     <div className="main-page">
       <header className="main-header">
-        <Typography variant="h3" component="div">
+        <Typography className="main-title" variant="h3" component="div">
           Spacestagram
         </Typography>
-        <Typography variant="h6">Powered By NASA's Image API</Typography>
+        <Typography className= "main-subtitle" variant="h6">Powered By NASA's Image API</Typography>
       </header>
       <body className="main-body">
         <PageView />
