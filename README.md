@@ -1,6 +1,6 @@
 # Spacestagram
 
-A React app that uses the NASA Image API to retrieve a group images to display in a feed. User is also able to like each image. Deployed with Netlify at https://spacestagram-be.netlify.app/. 
+A React app that uses the NASA Image API to retrieve a group of images to display in a feed. User is also able to like each image. Deployed with Netlify at https://spacestagram-be.netlify.app/. 
 
 ## Dependencies
 - NASA Image API
