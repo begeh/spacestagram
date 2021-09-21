@@ -1,4 +1,4 @@
-.main-page {
+.container {
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
@@ -10,21 +10,21 @@
   color: white;
 }
 
-.main-header {
+.header {
   margin: 5vh 0 50px 0;
   flex-grow: 1;
 }
 
-.main-title {
+.title {
   font-family: 'NasalizationRg-Regular' !important;
   font-size: 2.7rem !important;
 }
 
-.main-subtitle {
+.subtitle {
   font-family: 'Video Medium' !important;
 }
 
-.main-body {
+.main-page {
   flex-grow: 4;
 }
 
